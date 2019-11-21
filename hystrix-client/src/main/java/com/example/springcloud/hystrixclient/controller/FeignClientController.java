@@ -18,14 +18,14 @@ public class FeignClientController {
     private UserRemoteClient userRemoteClient;
 
     @GetMapping("/feign/callHello")
-    @HystrixCommand(fallbackMethod = "failCallHello")
+//    @HystrixCommand(fallbackMethod = "failCallHello")
     public String callHello() {
         String result = userRemoteClient.hello();
         System.out.println("调用结果：" + result);
         return result;
     }
     public String failCallHello(){
-        return "failed";
+        return "callHello failed";
     }
     @GetMapping("/feign/getUser")
     public User getUser(){

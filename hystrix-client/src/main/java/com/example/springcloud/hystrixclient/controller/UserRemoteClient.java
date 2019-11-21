@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author lixiaofeng
  * @date 2019/11/20
  */
-@FeignClient(value="eureka-client-user")
+@FeignClient(value="eureka-client-user" ,fallback = UserRemoteClientFallBack.class)
 public interface UserRemoteClient {
     @GetMapping("/user/hello")
     String hello();
