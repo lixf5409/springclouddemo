@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019/11/20
  */
 @RestController
-public class FeignClientController {
+public class HystrixClientController {
     @Autowired
     private UserRemoteClient userRemoteClient;
 
-    @GetMapping("/feign/callHello")
+    @GetMapping("/hystrix/callHello")
 //    @HystrixCommand(fallbackMethod = "failCallHello")
     public String callHello() {
         String result = userRemoteClient.hello();
@@ -27,13 +27,13 @@ public class FeignClientController {
     public String failCallHello(){
         return "callHello failed";
     }
-    @GetMapping("/feign/getUser")
+    @GetMapping("/hystrix/getUser")
     public User getUser(){
         User user = userRemoteClient.getUser();;
         System.out.println(user);
         return user;
     }
-    @PostMapping("feign/addUser")
+    @PostMapping("hystrix/addUser")
     public void addUser(){
         User user = new User();
         user.setUserId(1);
