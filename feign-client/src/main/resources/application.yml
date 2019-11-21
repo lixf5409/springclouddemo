@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: feign-client
+server:
+  port: 8084
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://lixf:lixf@localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+logging:
+  level:
+    com.example.springcloud.feignclient.controller.UserRemoteClient : debug
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true

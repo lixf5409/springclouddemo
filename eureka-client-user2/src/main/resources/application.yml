@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: eureka-client-user
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://lixf:lixf@localhost:8761/eureka/
+  # 采用IP注册
+  instance:
+    preferIpAddress: true
+    # 定义实例ID格式
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
